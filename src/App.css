@@ -20,7 +20,7 @@ html {
 .image-grid {
   display: flex; /* Use flex container for the image grid */
   overflow: hidden; /* Hide overflowing images outside the grid */
-  animation: moveHorizontal 30s linear infinite;
+  animation: moveHorizontal 90s linear infinite;
 }
 
 .image-grid .image-item {
