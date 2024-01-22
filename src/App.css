@@ -1,0 +1,96 @@
+/* App.css */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Hide horizontal overflow */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.image-gallery {
+  text-align: center;
+  padding: 20px;
+}
+
+.image-grid {
+  display: flex; /* Use flex container for the image grid */
+  overflow: hidden; /* Hide overflowing images outside the grid */
+  animation: moveHorizontal 30s linear infinite;
+}
+
+.image-grid .image-item {
+  overflow-x: hidden;
+  flex: 0 0 250px; /* Set a fixed width for each image item */
+  margin-right: 16px; /* Adjust margin between images */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% + 250px + 16px)); /* Adjusted the calculation and added margin */
+  }
+  200% {
+    transform: translateX(0%); /* Reset to the initial position for a seamless loop */
+  }
+}
+
+.image-item:hover {
+  transform: scale(1.1);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8); /* Initial scale to 80% */
+  background: #f7cde0;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Adjusted transition duration */
+  backface-visibility: hidden; /* Enhance visual effect */
+  opacity: 0; /* Start with opacity 0 */
+}
+
+.modal.modal-open {
+  transform: translate(-50%, -50%) scale(1); /* Full scale when modal is open */
+  opacity: 1; /* Opacity 1 when modal is open */
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.social-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
